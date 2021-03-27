@@ -1,4 +1,12 @@
+import React from 'react';
+import { useParams } from 'react-router';
+import News from '../components/news/News';
 
 export function NewsPage() {
-  // TODO útfæra fréttasíðu
+  const category = useParams().id;
+  console.log(category);
+  return ( 
+    <News category={category} showAll={true}></News>
+  )
+  
 }
