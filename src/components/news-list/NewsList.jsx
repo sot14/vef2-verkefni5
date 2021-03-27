@@ -22,7 +22,8 @@ export function NewsList() {
         const result = await fetch(`${apiUrl}`);
         newsData = await result.json();
 
-        if(result.status === 404) setStatus(404)
+        if(result.status === 404) setStatus(404);
+        if(result.status === 500) setStatus(500);
       } catch(e) {
         setError('villa við að sækja fréttir');
         return;
@@ -50,7 +51,12 @@ export function NewsList() {
 
   if(status === 404) {
     return (
-      <NotFound></NotFound>
+      <NotFound status={status}></NotFound>
+    )
+  }
+  if (status === 500) {
+    return (
+      <NotFound status={status}></NotFound>
     )
   }
 
